@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "857425626957",
+    "project_id": "hope-donation-2dbb1",
+    "storage_bucket": "hope-donation-2dbb1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857425626957:android:1200f8f5fd126524ab9904",
+        "android_client_info": {
+          "package_name": "com.example.hopedonationapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_pxzR3XO6dxOpaBCPFomY7p4pM6OTep4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
