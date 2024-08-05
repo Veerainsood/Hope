@@ -38,7 +38,7 @@ class Splsh : Fragment() {
 //        return inflater.inflate(R.layout.fragment_splsh, container, false)
         Handler(Looper.getMainLooper()).postDelayed({
         findNavController().navigate(R.id.action_splsh_to_signInFragment)
-        },3000)
+        },1000)
         return binding.root
     }
 

@@ -6,4 +6,7 @@
     <string name="change_lives_for_good">Change Lives for Good</string>
     <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="sign_in_via_phone">Sign In via Phone</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="validate">Validate</string>
+    <string name="enter_opt_sent_to_phone">Enter Opt Sent to Phone</string>
 </resources>

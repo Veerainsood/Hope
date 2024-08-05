@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_splsh_to_signInFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_splsh_to_signInFragment2"
+            app:destination="@id/signInFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -21,6 +24,9 @@
         tools:layout="@layout/fragment_sign_in" >
         <action
             android:id="@+id/action_signInFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_otpFragment2"
             app:destination="@id/otpFragment" />
     </fragment>
     <fragment

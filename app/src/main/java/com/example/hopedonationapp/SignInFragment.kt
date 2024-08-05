@@ -1,10 +1,14 @@
 package com.example.hopedonationapp
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.hopedonationapp.databinding.FragmentSplshBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,7 +24,7 @@ class SignInFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private  lateinit var binding :FragmentSplshBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,6 +38,11 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        binding = FragmentSplshBinding.inflate(layoutInflater)
+//        return inflater.inflate(R.layout.fragment_splsh, container, false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            findNavController().navigate(R.id.action_signInFragment_to_otpFragment)
+        },1000)
         return inflater.inflate(R.layout.fragment_sign_in, container, false)
     }
 

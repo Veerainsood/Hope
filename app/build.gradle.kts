@@ -54,4 +54,53 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
+
+    implementation(libs.androidx.navigation.fragment.ktx.v276)
+    implementation(libs.androidx.navigation.ui.ktx.v276)
+
+    implementation(libs.androidx.lifecycle.extensions)
+
+    implementation(libs.androidx.lifecycle.common.java8.v262)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v262)
+
+    //fire base shit
+    implementation(platform(libs.firebase.bom.v3270))
+    implementation(libs.google.firebase.analytics)
+
+    //authentication phone
+    implementation (libs.google.firebase.auth.ktx)
+    implementation(libs.play.services.auth.api.phone.v1801)
+    implementation (libs.play.services.auth.v2070)
+
+    implementation(libs.google.firebase.storage.ktx)
+    implementation(libs.google.firebase.database.ktx)
+    implementation(libs.firebase.messaging.ktx.v2340)
+
+    //image slider
+//    implementation(libs.imageslideshow)
+
+
+    //shimmer effect
+    implementation(libs.shimmer)
+
+    //room database
+    val room_version = "2.6.1"
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation(libs.androidx.room.ktx)
+    //glide
+    implementation(libs.glide)
+    annotationProcessor (libs.compiler)
+
+    // phone pay
+
+
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
 }

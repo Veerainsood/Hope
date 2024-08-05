@@ -47,7 +47,7 @@
             android:hint="@string/enter_your_phone_number"
             android:importantForAccessibility="yes"
             android:importantForAutofill="yes"
-            android:inputType="phone"
+            android:inputType="number"
             android:padding="10dp"
             app:layout_constraintBaseline_toBottomOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
@@ -64,21 +64,24 @@
             android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/blue"
-            android:text="Send OTP"
+            android:text="@string/send_otp"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_number" />
 
-        <VideoView
-            android:id="@+id/backgroundVideoView"
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:src="@drawable/charity"
             app:layout_constraintBottom_toTopOf="@+id/sign_in_title"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
