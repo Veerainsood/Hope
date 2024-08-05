@@ -5,4 +5,5 @@
     <string name="hope">Hope</string>
     <string name="change_lives_for_good">Change Lives for Good</string>
     <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="sign_in_via_phone">Sign In via Phone</string>
 </resources>

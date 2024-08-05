@@ -9,10 +9,15 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/sign_in_title"
@@ -20,11 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="359dp"
-            android:layout_marginBottom="18dp"
             android:fontFamily="cursive"
-            android:lay="center"
             android:paddingBottom="16dp"
-            android:text="Sign In via Phone"
+            android:text="@string/sign_in_via_phone"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/phone_number"
@@ -32,37 +35,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <EditText
             android:id="@+id/phone_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="173dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="44dp"
             android:hint="@string/enter_your_phone_number"
             android:importantForAccessibility="yes"
             android:importantForAutofill="yes"
             android:inputType="phone"
             android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sign_in_title" />
 
         <Button
             android:id="@+id/sign_in_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="@color/blue"
             android:text="Send OTP"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phone_number" />
 
         <VideoView
-            android:id="@+id/videoView"
+            android:id="@+id/backgroundVideoView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/sign_in_title"
