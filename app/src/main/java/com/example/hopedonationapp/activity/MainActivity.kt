@@ -1,11 +1,10 @@
-package com.example.hopedonationapp
+package com.example.hopedonationapp.activity
 
 import androidx.navigation.NavController
-import android.widget.VideoView
 import android.os.Bundle
-import android.net.Uri;
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hopedonationapp.R
 
 class MainActivity : AppCompatActivity() { // Activity == Screens
     // App Compact is used for backward compatibility + loading of dependencies,,,,,

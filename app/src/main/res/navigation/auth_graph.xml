@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splsh"
-        android:name="com.example.hopedonationapp.Splsh"
+        android:name="com.example.hopedonationapp.authentication.Splsh"
         android:label="fragment_splsh"
         tools:layout="@layout/fragment_splsh" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.hopedonationapp.SignInFragment"
+        android:name="com.example.hopedonationapp.authentication.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -28,10 +28,13 @@
         <action
             android:id="@+id/action_signInFragment_to_otpFragment2"
             app:destination="@id/otpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_otpFragment3"
+            app:destination="@id/otpFragment" />
     </fragment>
     <fragment
         android:id="@+id/otpFragment"
-        android:name="com.example.hopedonationapp.OtpFragment"
+        android:name="com.example.hopedonationapp.authentication.OtpFragment"
         android:label="fragment_otp"
         tools:layout="@layout/fragment_otp" />
 </navigation>
