@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.databinding.FragmentSignInBinding
+import com.example.hopedonationapp.utils.Utils
 
 
 /**
@@ -33,7 +35,23 @@ class SignInFragment : Fragment() {
         binding = FragmentSignInBinding.inflate(layoutInflater)
         setStatusBarColor()
         getUserNumber()
+        on_sign_in_button_Click()
         return binding.root
+    }
+
+    private fun on_sign_in_button_Click() {
+        binding.signInButton.setOnClickListener {
+            val number = binding.phoneNumber.text.toString()
+            if (number.isEmpty() || number.length != 10)
+            {
+                Utils.showToast(requireContext(), "Please enter valid phone number")
+            }
+            else {
+                val bundle = Bundle()
+                bundle.putString("number", number)
+                findNavController().navigate(R.id.action_signInFragment_to_otpFragment, bundle)
+            }
+        }
     }
 
     private fun setStatusBarColor(){}

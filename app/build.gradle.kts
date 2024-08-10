@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.android.application")
     id("com.google.gms.google-services")
     id("kotlin-kapt")
 }
@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,8 +67,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx.v262)
 
     //fire base shit
-    implementation(platform(libs.firebase.bom.v3270))
-    implementation(libs.google.firebase.analytics)
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation("com.google.firebase:firebase-analytics")
 
     //authentication phone
     implementation (libs.google.firebase.auth.ktx)

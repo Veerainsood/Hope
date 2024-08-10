@@ -9,4 +9,8 @@
     <string name="send_otp">Send OTP</string>
     <string name="validate">Validate</string>
     <string name="enter_opt_sent_to_phone">Enter Opt Sent to Phone</string>
+    <string name="clothes">Clothes</string>
+    <string name="food" />
+    <string name="Books" />
+    <string name="Meds" />
 </resources>

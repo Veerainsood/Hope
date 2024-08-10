@@ -34,7 +34,16 @@
     </fragment>
     <fragment
         android:id="@+id/otpFragment"
-        android:name="com.example.hopedonationapp.authentication.OtpFragment"
+        android:name="com.example.hopedonationapp.authentication.OTPFragment"
         android:label="fragment_otp"
-        tools:layout="@layout/fragment_otp" />
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.hopedonationapp.HomePage.HomeScreen"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" />
 </navigation>
