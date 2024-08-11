@@ -13,4 +13,11 @@
     <string name="food" />
     <string name="Books" />
     <string name="Meds" />
+    <string-array name="country_codes">
+    <item>+91</item>
+    <item>+1</item>
+    <item>+44</item>
+    <item>+61</item>
+    <item>+81</item>
+    </string-array>
 </resources>

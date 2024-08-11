@@ -7,6 +7,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -33,14 +35,17 @@ class SignInFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentSignInBinding.inflate(layoutInflater)
-        setStatusBarColor()
+        val spinnerCountryCode: Spinner = binding.CountryCode
+        val adapter = ArrayAdapter.createFromResource(requireContext(), R.array.country_codes, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerCountryCode.adapter = adapter
         getUserNumber()
         on_sign_in_button_Click()
         return binding.root
     }
 
     private fun on_sign_in_button_Click() {
-        binding.signInButton.setOnClickListener {
+        binding.SignIn.setOnClickListener {
             val number = binding.phoneNumber.text.toString()
             if (number.isEmpty() || number.length != 10)
             {
@@ -54,30 +59,22 @@ class SignInFragment : Fragment() {
         }
     }
 
-    private fun setStatusBarColor(){}
-
     private fun getUserNumber(){
         binding.phoneNumber.addTextChangedListener(object : TextWatcher {
+
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
 
             override fun onTextChanged(number: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 var len = number?.length
-                if (len == 10) {
-                    binding.signInButton.setBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.blue
-                        )
-                    )
-                } else {
-                    binding.signInButton.setBackgroundColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.grey
-                        )
-                    )
+                if (len == 10)
+                {
+                    binding.SignIn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue))
+                }
+                else
+                {
+                    binding.SignIn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.grey))
                 }
             }
 

@@ -27,10 +27,10 @@
         android:id="@+id/food"
         android:layout_width="61dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/food"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/img_1"
-        android:contentDescription="@string/food"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.346"
@@ -42,10 +42,10 @@
         android:id="@+id/Meds"
         android:layout_width="61dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/Meds"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/img_2"
-        android:contentDescription="@string/Meds"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.608"
@@ -57,10 +57,10 @@
         android:id="@+id/Books"
         android:layout_width="61dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/Books"
         android:padding="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/img_3"
-        android:contentDescription="@string/Books"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.871"
@@ -69,12 +69,12 @@
         app:layout_constraintVertical_bias="0.547" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
-        android:text="Welcome"
         android:padding="0dp"
+        android:text="Welcome"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
         android:id="@+id/videoView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/textView20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,38 +101,42 @@
         android:text="Donate Clothes"
         android:textAlignment="center"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="386dp" />
+        app:layout_constraintEnd_toEndOf="@+id/clothes"
+        app:layout_constraintStart_toStartOf="@+id/clothes"
+        app:layout_constraintTop_toBottomOf="@+id/clothes" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView5"
         android:layout_width="57dp"
         android:layout_height="12dp"
         android:text="Donate Food"
         android:textAlignment="center"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="386dp" />
+        app:layout_constraintEnd_toEndOf="@+id/food"
+        app:layout_constraintStart_toStartOf="@+id/food"
+        app:layout_constraintTop_toBottomOf="@+id/food" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView6"
         android:layout_width="57dp"
         android:layout_height="12dp"
         android:text="Donate Books"
         android:textAlignment="center"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="276dp"
-        tools:layout_editor_absoluteY="386dp" />
+        app:layout_constraintEnd_toEndOf="@+id/Books"
+        app:layout_constraintStart_toStartOf="@+id/Books"
+        app:layout_constraintTop_toBottomOf="@+id/Books" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView7"
         android:layout_width="57dp"
         android:layout_height="12dp"
         android:text="Donate Meds"
         android:textAlignment="center"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="190dp"
-        tools:layout_editor_absoluteY="386dp" />
+        app:layout_constraintEnd_toEndOf="@+id/Meds"
+        app:layout_constraintStart_toStartOf="@+id/Meds"
+        app:layout_constraintTop_toBottomOf="@+id/Meds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
