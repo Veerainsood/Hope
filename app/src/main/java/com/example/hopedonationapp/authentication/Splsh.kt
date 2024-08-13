@@ -24,10 +24,22 @@ class Splsh : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSplshBinding.inflate(layoutInflater)
 //        return inflater.inflate(R.layout.fragment_splsh, container, false)
-        Handler(Looper.getMainLooper()).postDelayed({
-        findNavController().navigate(R.id.action_splsh_to_signInFragment)
-        },1000)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//        findNavController().navigate(R.id.action_splsh_to_signInFragment)
+//        },1000)
+        on_admin_button_click()
+        on_user_button_click()
         return binding.root
+    }
+    private fun on_admin_button_click(){
+        binding.button3.setOnClickListener {
+            findNavController().navigate(R.id.action_splsh_to_admin_entrance)
+        }
+    }
+    private fun on_user_button_click() {
+        binding.button4.setOnClickListener {
+            findNavController().navigate(R.id.action_splsh_to_signInFragment)
+        }
     }
 
 }
