@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminHomeFragment">
+    tools:context=".admin.AdminHomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -21,10 +21,10 @@
             android:layout_height="49dp"
             android:text="Change Password"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/button4"
+            app:layout_constraintEnd_toEndOf="@+id/user"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/button4"
-            app:layout_constraintTop_toBottomOf="@+id/button4"
+            app:layout_constraintStart_toStartOf="@+id/user"
+            app:layout_constraintTop_toBottomOf="@+id/user"
             app:layout_constraintVertical_bias="0.243"
             tools:ignore="MissingConstraints" />
 
@@ -44,7 +44,7 @@
             app:layout_constraintVertical_bias="0.079" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/user"
             android:layout_width="291dp"
             android:layout_height="49dp"
             android:text="Push notice"

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_splsh_to_admin_entrance2"
             app:destination="@id/admin_entrance" />
+        <action
+            android:id="@+id/action_splsh_to_company2"
+            app:destination="@id/company" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -57,12 +60,12 @@
         tools:layout="@layout/fragment_home_screen" />
     <fragment
         android:id="@+id/adminHomeFragment"
-        android:name="com.example.hopedonationapp.AdminHomeFragment"
+        android:name="com.example.hopedonationapp.admin.AdminHomeFragment"
         android:label="fragment_admin_home"
         tools:layout="@layout/fragment_admin_home" />
     <fragment
         android:id="@+id/admin_entrance"
-        android:name="com.example.hopedonationapp.admin_entrance"
+        android:name="com.example.hopedonationapp.activity.admin_entrance"
         android:label="fragment_admin_entrance"
         tools:layout="@layout/fragment_admin_entrance" >
         <action
@@ -72,4 +75,9 @@
             android:id="@+id/action_admin_entrance_to_adminHomeFragment2"
             app:destination="@id/adminHomeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/company"
+        android:name="com.example.hopedonationapp.Comapny.Company"
+        android:label="fragment_company"
+        tools:layout="@layout/fragment_company" />
 </navigation>

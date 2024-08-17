@@ -1,20 +1,17 @@
-package com.example.hopedonationapp
+package com.example.hopedonationapp.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.databinding.FragmentAdminEntranceBinding
-import com.example.hopedonationapp.utils.Utils
 import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 /**
  * A simple [Fragment] subclass.
  * Use the [admin_entrance.newInstance] factory method to
@@ -49,13 +46,17 @@ class admin_entrance : Fragment() {
                     }
                     else
                     {
-                        Toast.makeText(requireActivity(),"%d",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireActivity(), "%d", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
             else
             {
-                Toast.makeText(requireActivity(),"Please enter text in both email and password",Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireActivity(),
+                    "Please enter text in both email and password",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         return binding.root

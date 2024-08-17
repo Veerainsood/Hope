@@ -67,7 +67,7 @@ class SignInFragment : Fragment() {
             number = binding.phoneNumber.text.toString()
 
             number = "+1$number"
-            Utils.showToast(requireContext(),number)
+
             if (number.isEmpty() || number.length != 12)
             {
                 Utils.showToast(requireContext(), "Please enter valid phone number")

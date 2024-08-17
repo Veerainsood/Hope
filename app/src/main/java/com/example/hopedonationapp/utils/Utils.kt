@@ -25,9 +25,7 @@ object Utils {
     }
 
     fun showToast(context: Context, msg: String) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
     //to get the instance of user

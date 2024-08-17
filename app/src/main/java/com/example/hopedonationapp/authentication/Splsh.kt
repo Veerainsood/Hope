@@ -1,7 +1,5 @@
 package com.example.hopedonationapp.authentication
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,17 +25,23 @@ class Splsh : Fragment() {
 //        Handler(Looper.getMainLooper()).postDelayed({
 //        findNavController().navigate(R.id.action_splsh_to_signInFragment)
 //        },1000)
-        on_admin_button_click()
-        on_user_button_click()
+        onCompanyButtonClick()
+        onAdminButtonClick()
+        onUserButtonClick()
         return binding.root
     }
-    private fun on_admin_button_click(){
-        binding.button3.setOnClickListener {
+    private fun onCompanyButtonClick(){
+        binding.company.setOnClickListener {
+            findNavController().navigate(R.id.action_splsh_to_company2)
+        }
+    }
+    private fun onAdminButtonClick(){
+        binding.admin.setOnClickListener {
             findNavController().navigate(R.id.action_splsh_to_admin_entrance)
         }
     }
-    private fun on_user_button_click() {
-        binding.button4.setOnClickListener {
+    private fun onUserButtonClick() {
+        binding.user.setOnClickListener {
             findNavController().navigate(R.id.action_splsh_to_signInFragment)
         }
     }

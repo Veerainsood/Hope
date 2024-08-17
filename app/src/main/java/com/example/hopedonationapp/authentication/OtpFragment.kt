@@ -38,6 +38,7 @@ class OTPFragment : Fragment() {
         binding = FragmentOtpBinding.inflate(layoutInflater)
         auth = FirebaseAuth.getInstance()
         phone = arguments?.getString("number")!!
+        binding.textView9.text = "${this.phone}"
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phone) // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -45,7 +46,6 @@ class OTPFragment : Fragment() {
             .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
-        Toast.makeText(requireContext(), "Came here", Toast.LENGTH_SHORT).show()
 
         binding.button2.setOnClickListener {
 
@@ -107,6 +107,10 @@ class OTPFragment : Fragment() {
             // The SMS verification code has been sent to the provided phone number, we
             // now need to ask the user to enter the code and then construct a credential
             // by combining the code with a verification ID.
+            Utils.showDialog(requireContext(), "Sending OTP ...")
+            Utils.hideDialog()
+            Utils.showToast(requireContext(), "Otp sent...")
+            Utils.hideDialog()
             otp = verificationId
             resendingToken = token
         }
@@ -127,23 +131,5 @@ class OTPFragment : Fragment() {
             }
         }
     }
-
-    private fun onVerifyButtonClick() {
-
-    }
-
-    private fun verifyOtp(otp: String) {
-        Utils.hideDialog()
-        Utils.showToast(requireContext(), "Login Succesful")
-        findNavController().navigate(R.id.action_otpFragment_to_homeScreen)
-    }
-
-    private fun sendOTP() {
-        Utils.showDialog(requireContext(), "Sending OTP ...")
-        Utils.hideDialog()
-        Utils.showToast(requireContext(), "Otp sent...")
-    }
-
-
 
 }
