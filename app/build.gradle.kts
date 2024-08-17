@@ -42,6 +42,7 @@ android {
 
 dependencies {
 
+    implementation("com.google.android.play:integrity:1.4.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -69,7 +70,7 @@ dependencies {
     //fire base shit
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation("com.google.firebase:firebase-analytics")
-
+    implementation("com.google.firebase:firebase-auth")
     //authentication phone
     implementation (libs.google.firebase.auth.ktx)
     implementation(libs.play.services.auth.api.phone.v1801)

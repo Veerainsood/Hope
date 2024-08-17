@@ -12,50 +12,102 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-63dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="245dp"
-        android:layout_height="36dp"
-        android:text="Enter the password"
-        android:textAlignment="center"
-        android:textSize="@dimen/_15sdp"
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="701dp"
+        android:layout_height="436dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/charity"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="295dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.07999998" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="191dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="292dp"
+        android:fontFamily="cursive"
+        android:text="Admin Login"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.187" />
+        app:layout_constraintVertical_bias="0.843" />
+
+    <TextView
+        android:id="@+id/Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintVertical_bias="0.51" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="245dp"
-        android:layout_height="36dp"
+        android:layout_width="266dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="5dp"
         android:ems="10"
         android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="@+id/textView10"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.227" />
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="3dp"
+        android:text="Password"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="0.481" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="155dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="272dp"
-        android:text="Confirm"
+        android:id="@+id/SignInButton"
+        android:layout_width="147dp"
+        android:layout_height="54dp"
+        android:text="Login"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.36" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

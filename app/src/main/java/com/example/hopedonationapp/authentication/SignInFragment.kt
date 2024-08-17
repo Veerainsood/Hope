@@ -1,6 +1,8 @@
 package com.example.hopedonationapp.authentication
 
 
+import android.R.attr.fragment
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,10 +13,22 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.databinding.FragmentSignInBinding
 import com.example.hopedonationapp.utils.Utils
+import com.google.firebase.FirebaseException
+import com.google.firebase.FirebaseTooManyRequestsException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthMissingActivityForRecaptchaException
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthOptions
+import com.google.firebase.auth.PhoneAuthProvider
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -22,13 +36,16 @@ import com.example.hopedonationapp.utils.Utils
  * Use the [SignInFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+class AuthViewModel : ViewModel() {
+    val forceResendingToken = MutableLiveData<PhoneAuthProvider.ForceResendingToken>()
+}
 class SignInFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var binding: FragmentSignInBinding
-
+    private lateinit var number: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +54,7 @@ class SignInFragment : Fragment() {
         binding = FragmentSignInBinding.inflate(layoutInflater)
         val spinnerCountryCode: Spinner = binding.CountryCode
         val adapter = ArrayAdapter.createFromResource(requireContext(), R.array.country_codes, android.R.layout.simple_spinner_item)
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerCountryCode.adapter = adapter
         getUserNumber()
@@ -46,12 +64,16 @@ class SignInFragment : Fragment() {
 
     private fun on_sign_in_button_Click() {
         binding.SignIn.setOnClickListener {
-            val number = binding.phoneNumber.text.toString()
-            if (number.isEmpty() || number.length != 10)
+            number = binding.phoneNumber.text.toString()
+
+            number = "+1$number"
+            Utils.showToast(requireContext(),number)
+            if (number.isEmpty() || number.length != 12)
             {
                 Utils.showToast(requireContext(), "Please enter valid phone number")
             }
             else {
+
                 val bundle = Bundle()
                 bundle.putString("number", number)
                 findNavController().navigate(R.id.action_signInFragment_to_otpFragment, bundle)
@@ -85,6 +107,7 @@ class SignInFragment : Fragment() {
         })
 
     }
+
 
 
 }

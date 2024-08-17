@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_splsh_to_admin_entrance"
             app:destination="@id/admin_entrance" />
+        <action
+            android:id="@+id/action_splsh_to_signInFragment3"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_splsh_to_admin_entrance2"
+            app:destination="@id/admin_entrance" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -61,6 +67,9 @@
         tools:layout="@layout/fragment_admin_entrance" >
         <action
             android:id="@+id/action_admin_entrance_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_admin_entrance_to_adminHomeFragment2"
             app:destination="@id/adminHomeFragment" />
     </fragment>
 </navigation>
