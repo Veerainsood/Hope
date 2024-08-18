@@ -26,9 +26,10 @@ class Splsh : Fragment() {
         onUserButtonClick()
         return binding.root
     }
-    private fun onCompanyButtonClick(){
+    private fun onCompanyButtonClick()
+    {
         binding.company.setOnClickListener {
-            findNavController().navigate(R.id.action_splsh_to_company2)
+            findNavController().navigate(R.id.action_splsh_to_company_registration2)
         }
     }
     private fun onAdminButtonClick(){

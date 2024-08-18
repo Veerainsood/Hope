@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.databinding.FragmentAdminEntranceBinding
+import com.example.hopedonationapp.utils.Utils
 import com.google.firebase.auth.FirebaseAuth
 
 /**
@@ -37,16 +38,16 @@ class admin_entrance : Fragment() {
         binding.SignInButton.setOnClickListener {
             val email = binding.editTextTextEmailAddress.text.toString()
             val pass = binding.editTextTextPassword.text.toString()
-            if(email.isNotEmpty() && pass.isNotEmpty())
-            {
-                firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener {
-                    if(it.isSuccessful)
-                    {
-                        findNavController().navigate(R.id.action_admin_entrance_to_adminHomeFragment)
-                    }
-                    else
-                    {
-                        Toast.makeText(requireActivity(), "%d", Toast.LENGTH_SHORT).show()
+
+                if (email.isNotEmpty() && pass.isNotEmpty()) {
+
+                    if(email == "hopeadmin@gmail.com") {
+                    firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            findNavController().navigate(R.id.action_admin_entrance_to_adminHomeFragment)
+                        } else {
+                            Toast.makeText(requireActivity(), "Wrong Password !!!", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }

@@ -26,8 +26,8 @@
             android:id="@+id/action_splsh_to_admin_entrance2"
             app:destination="@id/admin_entrance" />
         <action
-            android:id="@+id/action_splsh_to_company2"
-            app:destination="@id/company" />
+            android:id="@+id/action_splsh_to_company_registration2"
+            app:destination="@id/company_registration2" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -83,11 +83,6 @@
             app:destination="@id/adminHomeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/company"
-        android:name="com.example.hopedonationapp.Comapny.Company"
-        android:label="fragment_company"
-        tools:layout="@layout/fragment_company" />
-    <fragment
         android:id="@+id/verifiedCharityOrg"
         android:name="com.example.hopedonationapp.HomePage.VerifiedCharityOrg"
         android:label="verified_charity_org"
@@ -105,4 +100,28 @@
             android:id="@+id/action_payments_to_verifiedCharityOrg"
             app:destination="@id/verifiedCharityOrg" />
     </fragment>
+    <fragment
+        android:id="@+id/company_home"
+        android:name="com.example.hopedonationapp.Comapny.company_home"
+        android:label="fragment_company_home"
+        tools:layout="@layout/fragment_company_home" />
+    <fragment
+        android:id="@+id/company_registration2"
+        android:name="com.example.hopedonationapp.Comapny.CompanyRegistration"
+        android:label="fragment_company_registration"
+        tools:layout="@layout/fragment_company_registration" >
+        <action
+            android:id="@+id/action_company_registration2_to_companyLogin3"
+            app:destination="@id/companyLogin3" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyLogin3"
+        android:name="com.example.hopedonationapp.Comapny.companyLogin"
+        android:label="fragment_company_login"
+        tools:layout="@layout/fragment_company_login" >
+        <action
+            android:id="@+id/action_companyLogin3_to_company_home"
+            app:destination="@id/company_home" />
+    </fragment>
+
 </navigation>
