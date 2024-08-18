@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.razorpay:checkout:1.6.20")
     implementation("com.google.android.play:integrity:1.4.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

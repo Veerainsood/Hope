@@ -45,11 +45,11 @@
                 android:id="@+id/PhoneNumDisp"
                 android:layout_width="366dp"
                 android:layout_height="53dp"
-
                 android:layout_marginTop="481dp"
                 android:layout_marginBottom="14dp"
                 android:ems="10"
                 android:inputType="numberPassword"
+                android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/button2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.489"

@@ -39,6 +39,12 @@ class OTPFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         phone = arguments?.getString("number")!!
         binding.textView9.text = "${this.phone}"
+        SendOtp()
+        return binding.root
+    }
+
+    private fun SendOtp()
+    {
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(phone) // Phone number to verify
             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -69,9 +75,7 @@ class OTPFragment : Fragment() {
             }
 
         }
-        return binding.root
     }
-
     private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
@@ -90,11 +94,11 @@ class OTPFragment : Fragment() {
             // for instance if the the phone number format is not valid.
 
             if (e is FirebaseAuthInvalidCredentialsException) {
-
+                SendOtp()
             } else if (e is FirebaseTooManyRequestsException) {
-                // The SMS quota for the project has been exceeded
+                SendOtp()
             } else if (e is FirebaseAuthMissingActivityForRecaptchaException) {
-                // reCAPTCHA verification attempted with null Activity
+                SendOtp()
             }
 
             // Show a message and update the UI

@@ -13,6 +13,13 @@
     <string name="food" />
     <string name="Books" />
     <string name="Meds" />
+    <string name="for_you_verified_by_us">For You Verified by Us</string>
+    <string name="jk_yog_charity">JK Yog Charity</string>
+    <string name="please_enter_your_amount">Please enter your amount</string>
+    <string name="thankyou_so_much_for_your_kindness">Thankyou so much for your kindness</string>
+    <string name="pay_securely">Pay Securely</string>
+    <string name="thankyou">Thankyou</string>
+    <string name="tod">TOD</string>
     <string-array name="country_codes">
         <item>+91</item>
         <item>+1</item>

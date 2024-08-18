@@ -19,12 +19,8 @@ class Splsh : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         binding = FragmentSplshBinding.inflate(layoutInflater)
-//        return inflater.inflate(R.layout.fragment_splsh, container, false)
-//        Handler(Looper.getMainLooper()).postDelayed({
-//        findNavController().navigate(R.id.action_splsh_to_signInFragment)
-//        },1000)
         onCompanyButtonClick()
         onAdminButtonClick()
         onUserButtonClick()

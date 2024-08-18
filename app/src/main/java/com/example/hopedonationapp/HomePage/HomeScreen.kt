@@ -9,22 +9,20 @@ import android.view.ViewGroup
 import android.widget.MediaController
 import android.widget.VideoView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.databinding.FragmentHomeScreenBinding
 import com.example.hopedonationapp.databinding.FragmentSplshBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeScreen.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class HomeScreen : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var binding : FragmentHomeScreenBinding
     private lateinit var videoView: VideoView
+    private lateinit var binding : FragmentHomeScreenBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,7 +42,6 @@ class HomeScreen : Fragment() {
         videoView.setOnCompletionListener {
             videoView.start() //for infinite loop
         }
-
         val clothes = binding.clothes.setOnClickListener {
             openGoogleMaps("anath+ashram+near+me")
         }
@@ -57,7 +54,22 @@ class HomeScreen : Fragment() {
         val meds = binding.Meds.setOnClickListener {
             openGoogleMaps("public+hospital+near+me")
         }
-
+        val blood = binding.blood.setOnClickListener {
+            openGoogleMaps("blood+bank+near+me")
+        }
+        val organ = binding.organ.setOnClickListener {
+            openGoogleMaps("public+hospital+near+me")
+        }
+        val Gaushala = binding.Gaushala.setOnClickListener {
+            openGoogleMaps("goshala+near+me")
+        }
+        val jkp = binding.jkp.setOnClickListener {
+            val getUrl = Uri.parse("https://jkyog.in/en/donate/")
+            startActivity(Intent(Intent.ACTION_VIEW, getUrl))
+        }
+        val charity_organization = binding.charityOrganization.setOnClickListener {
+            findNavController().navigate(R.id.action_homeScreen_to_verifiedCharityOrg2)
+        }
         return binding.root
 
     }
