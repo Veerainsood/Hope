@@ -35,4 +35,4 @@ Hope is a comprehensive charity donation app designed to connect donors with ver
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/hope-donation-app.git
+   git clone https://github.com/Veerainsood/Hope.git
