@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.databinding.FragmentAdminHomeBinding
@@ -26,6 +28,9 @@ class AdminHomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentAdminHomeBinding.inflate(layoutInflater)
+        binding.button6.setOnClickListener(){
+            findNavController().navigate(R.id.action_adminHomeFragment_to_check_storiesFragment)
+        }
 
         return binding.root;
     }
