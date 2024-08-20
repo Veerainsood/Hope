@@ -32,8 +32,12 @@ Hope is a comprehensive charity donation app designed to connect donors with ver
   - **Charity Organization**: Navigates to a fragment for verified charity organizations.
 
 # Contribution
-Aseem Anand -> Main role in Admin home interface, Sign in buttons, 
-
+- Aseem Anand -> Main role in Admin home interface, Sign in buttons, Profile fragment in home seciton (not yet completed), general help, working on push notification + general debugging + integrated profile fragment and checking stories importing from firebase.
+- Aaman Anand -> helped in admin layout, working on push notification , helped in adding more donation links in maps+ general debugging
+- Veerain Sood -> Built the Spash Screen + Added firebase login support + added email login support + Created Complete Structre of Maps showing + Added donation Links to verified Compaines + build Major fragments for everything, + Integrated Payment Gateways and authentication + Desiging Layout of app + Icon customizations
+general debugging + Did the entire company interface from start till end. + added provision to upload docs for company verification ( Imporved designs  + Code)
+- Kalyan Anudeep -> Helped in maps + Helped in making UI designs more attractive gave foundation ideas + starting code to documents uploading for company verification
+- Yashwanth -> general help + debugging
 
 ## Installation
 
