@@ -16,8 +16,8 @@ Hope is a comprehensive charity donation app designed to connect donors with ver
   - **Books**: Contribute to public libraries.
   - **Medicines**: Donate to public hospitals.
   - **Blood**: Locate and donate to blood banks.
-  - **Organ Donations**: Support public hospitals for organ donations.
-
+  - **Organ Donations**: Support public hospitals for organ donations
+ 
 ### HomeScreen Fragment
 
 - **Buttons and Actions**:
@@ -30,6 +30,10 @@ Hope is a comprehensive charity donation app designed to connect donors with ver
   - **Gaushala**: Opens Google Maps to find nearby goshala.
   - **JKP**: Opens an external link for JKP donations.
   - **Charity Organization**: Navigates to a fragment for verified charity organizations.
+
+# Contribution
+Aseem Anand -> Main role in Admin home interface, Sign in buttons, 
+
 
 ## Installation
 
