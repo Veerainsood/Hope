@@ -64,12 +64,19 @@
         <action
             android:id="@+id/action_homeScreen_to_verifiedCharityOrg2"
             app:destination="@id/verifiedCharityOrg" />
+        <action
+            android:id="@+id/action_homeScreen_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
-    <fragment
+<fragment
         android:id="@+id/adminHomeFragment"
         android:name="com.example.hopedonationapp.admin.AdminHomeFragment"
         android:label="fragment_admin_home"
-        tools:layout="@layout/fragment_admin_home" />
+        tools:layout="@layout/fragment_admin_home" >
+        <action
+            android:id="@+id/action_adminHomeFragment_to_check_storiesFragment"
+            app:destination="@id/check_storiesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/admin_entrance"
         android:name="com.example.hopedonationapp.activity.admin_entrance"
@@ -123,5 +130,14 @@
             android:id="@+id/action_companyLogin3_to_company_home"
             app:destination="@id/company_home" />
     </fragment>
+        <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hopedonationapp.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/check_storiesFragment"
+        android:name="com.example.hopedonationapp.admin.check_storiesFragment"
+        android:label="fragment_check_stories"
+        tools:layout="@layout/fragment_check_stories" />
 
 </navigation>
