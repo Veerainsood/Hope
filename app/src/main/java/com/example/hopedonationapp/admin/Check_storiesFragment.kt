@@ -9,6 +9,7 @@ import android.graphics.pdf.PdfRenderer
 import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,7 +64,6 @@ class check_storiesFragment : Fragment() {
 
         // Now that view is non-null, initialize the components
         loadAllUserStories()
-        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         storyAdapter = AdminStoryAdapter { story ->
             openFile(story.fileUrl) // Opens the file when TextView is clicked
         }
@@ -73,25 +73,42 @@ class check_storiesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         uploadButton=view.findViewById(R.id.button3)
-        view.findViewById<Button>(R.id.button3).setOnClickListener {
+        uploadButton.setOnClickListener {
             val selectedStories = storyAdapter.getSelectedStories()
             if (selectedStories.isNotEmpty()) {
-                uploadSelectedStoriesToHomeScreen(selectedStories)
+                uploadSelectedStoriesToFirebase(selectedStories)
             } else {
                 Toast.makeText(context, "No stories selected!", Toast.LENGTH_SHORT).show()
             }
         }
 
+
         // Return the view after initializing everything
         return view
     }
-    private fun uploadSelectedStoriesToHomeScreen(selectedStories: List<Story>) {
-        sharedViewModel.setSelectedStories(selectedStories)
-        Toast.makeText(context, "Selected stories uploaded!", Toast.LENGTH_SHORT).show()
+    private fun uploadSelectedStoriesToFirebase(stories: List<Story>) {
+        val selectedStoriesRef = storage.reference.child("selected_stories/")
 
-        // Optionally navigate to HomeScreen
-       // findNavController().navigate(R.id.action_check_storiesFragment_to_homeScreen)
+        for (story in stories) {
+            val fileUri = Uri.parse(story.fileUrl)
+            val fileName = fileUri.lastPathSegment ?: "unknown"
+            val fileRef = selectedStoriesRef.child(fileName)
+
+            fileUri.let { uri ->
+                fileRef.putFile(uri)
+                    .addOnSuccessListener {
+                        // Display success message
+                        Toast.makeText(context, "${story.fileName} uploaded successfully!", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { exception ->
+                        // Display detailed error message
+                        Toast.makeText(context, "Failed to upload ${story.fileName}: ${exception.message}", Toast.LENGTH_SHORT).show()
+                        Log.e("UploadError", "Failed to upload file ${story.fileName}", exception)
+                    }
+            }
+        }
     }
+
     private fun openFile(fileUrl: String) {
         val uri = Uri.parse(fileUrl)
         val mimeType = getMimeType(uri)
