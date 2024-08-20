@@ -31,9 +31,7 @@ class RecyclerViewAdapter(private val docReq: ArrayList<UpdateDocReq>, private v
 
         holder.button.setOnClickListener {
 
-            holder.button.setOnClickListener {
                 pdfSelectionCallback(position)
-            }
         }
     }
 

@@ -17,7 +17,6 @@ import com.example.hopedonationapp.adapter.UpdateDocReq
 import com.example.hopedonationapp.databinding.FragmentCompanyHomeBinding
 import com.example.hopedonationapp.utils.Utils
 
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 
 
@@ -27,7 +26,6 @@ class company_home : Fragment() {
     private lateinit var textViewArray: Array<String>
     private lateinit var buttonTextArray: Array<String>
     private lateinit var newArrayList: ArrayList<UpdateDocReq>
-    private lateinit var recyclerViewAdapter: RecyclerViewAdapter
     private val PDF = 0
     private var selectedDocPosition: Int = -1
     private var storageFirebase = FirebaseStorage.getInstance().reference
@@ -39,6 +37,7 @@ class company_home : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCompanyHomeBinding.inflate(layoutInflater)
+        binding.CompanyName.text = arguments?.getString("AccountName")
 
         textViewArray = arrayOf<String>(
             "Section 12A"," incorporation document", "registration certificate","(FCRA), if applicable"
@@ -47,23 +46,27 @@ class company_home : Fragment() {
         buttonTextArray = arrayOf<String>(
             "Upload 12A","Upload incorp doc","Upload reg cert","Upload FCRA","Upload 23C","Upload operations"
         )
+
         buttonStates = Array(textViewArray.size) { false }
         binding.progressBar2.visibility = View.GONE
         newArrayList = ArrayList()
+
         binding.FinalVerification.isEnabled = false
-        for (i in textViewArray.indices) {
+        for (i in textViewArray.indices)
+        {
             newArrayList.add(UpdateDocReq(textViewArray[i], buttonTextArray[i]))
         }
 
         binding.Recview.layoutManager = LinearLayoutManager(context)
         binding.Recview.setHasFixedSize(true)
-        binding.Recview.adapter = RecyclerViewAdapter(newArrayList) { position ->
+        binding.Recview.adapter = RecyclerViewAdapter(newArrayList)
+        { position ->
             selectedDocPosition = position
             startPDFSelection()
         }
         if(binding.FinalVerification.isEnabled)
         {
-            binding.FinalVerification.setOnClickListener {
+            binding.FinalVerification.setOnClickListener{
                 Utils.showToast(requireContext(),"We have succesfully collected your information\nOur Admins will verify your application shortly")
             }
         }

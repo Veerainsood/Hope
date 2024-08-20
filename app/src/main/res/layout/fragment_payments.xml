@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Payments" >
+    tools:context=".payments.Payments">
 
     <EditText
         android:id="@+id/editTextNumberSigned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:textAlignment="center"
         android:inputType="numberSigned"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.796"
@@ -35,9 +35,9 @@
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="61dp"
         android:src="@drawable/payment_background"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintBottom_toTopOf="@+id/clickToClose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -85,13 +85,40 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="402dp"
-        android:layout_height="189dp"
+        android:layout_width="0dp"
+        android:layout_height="161dp"
         android:scaleType="fitCenter"
         android:src="@drawable/don_quote"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/popupOnSuccess"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/popupOnSuccess"
+        android:layout_width="283dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="282dp"
+        android:background="#FDFDFD"
+        android:gravity="center"
+        android:text="YOUR_TRANSACTION_ID"
+        android:textAlignment="center"
+        android:textColor="#4CE211"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/clickToClose"
+        android:layout_width="146dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="259dp"
+        android:text="Click to close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/payments"
-        android:name="com.example.hopedonationapp.Payments"
+        android:name="com.example.hopedonationapp.payments.Payments"
         android:label="fragment_payments"
         tools:layout="@layout/fragment_payments" >
         <action
