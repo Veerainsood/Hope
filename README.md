@@ -44,3 +44,5 @@ general debugging + Did the entire company interface from start till end. + adde
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Veerainsood/Hope.git
+2. **Remove the caches folder (remove Hope-1.0.0/caches)**
+- and open in android studio for more info on underlying files and structure
