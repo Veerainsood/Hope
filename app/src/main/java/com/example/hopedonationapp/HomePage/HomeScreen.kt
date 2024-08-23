@@ -19,8 +19,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.hopedonationapp.R
-import com.example.hopedonationapp.SharedViewModel
 import com.example.hopedonationapp.StoryAdapter.AdminStoryAdapter
 import com.example.hopedonationapp.databinding.FragmentHomeScreenBinding
 import com.google.firebase.storage.FirebaseStorage
@@ -127,8 +127,11 @@ private fun getMimeType(uri: Uri): String {
 
     private fun generateImageThumbnail(uri: Uri): Bitmap? {
         return try {
-            val inputStream = context?.contentResolver?.openInputStream(uri)
-            BitmapFactory.decodeStream(inputStream)
+            val futureTarget = Glide.with(this)
+                .asBitmap()
+                .load(uri)
+                .submit()
+            futureTarget.get()
         } catch (e: Exception) {
             null
         }
