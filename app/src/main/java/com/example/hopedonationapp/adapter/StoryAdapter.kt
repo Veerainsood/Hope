@@ -1,4 +1,6 @@
 package com.example.hopedonationapp.adapter
+
+import Story
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +22,7 @@ class StoryAdapter(private val onStoryClick: (Story) -> Unit) : RecyclerView.Ada
         private val fileNameTextView: TextView = itemView.findViewById(R.id.storyTextView)
 
         fun bind(story: Story) {
-            fileNameTextView.text = "HERE IS A NEW STORY"
+            fileNameTextView.text = "Let's revisit this one"
             story.thumbnailBitmap?.let {
                 thumbnailImageView.setImageBitmap(it)
             } ?: thumbnailImageView.setImageResource(R.drawable.hope_for_it_win_it) // Set a default image if null
@@ -39,3 +41,5 @@ class StoryAdapter(private val onStoryClick: (Story) -> Unit) : RecyclerView.Ada
 
     override fun getItemCount(): Int = stories.size
 }
+
+
