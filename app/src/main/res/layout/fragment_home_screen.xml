@@ -7,6 +7,17 @@
     android:orientation="vertical"
     tools:context=".HomePage.HomeScreen">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/topStoriesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <ImageButton
         android:id="@+id/clothes"
         android:layout_width="61dp"
@@ -114,17 +125,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38" />
-
-    <VideoView
-        android:id="@+id/videoView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView4"
@@ -247,23 +247,27 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.411" />
 
-    <Button
-        android:id="@+id/charity_organization"
-        android:layout_width="158dp"
-        android:layout_height="131dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/heart"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:lineSpacingExtra="0sp"
-        android:padding="8dp"
-        android:text="Donate money to Verified Charities"
-        android:textAlignment="center"
-        android:textColor="#3723F8"
-        android:textSize="10sp"
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/red_heart"
+        android:layout_width="60dp"
+        android:layout_height="54dp"
+        android:src="@drawable/red_for_encouragement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/green_heart"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/green_heart"
+        android:layout_width="95dp"
+        android:layout_height="88dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/green_for_verified"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.942" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
