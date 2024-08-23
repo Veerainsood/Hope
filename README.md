@@ -17,8 +17,8 @@ Hope is a comprehensive charity donation app designed to connect donors with ver
   - **Medicines**: Donate to public hospitals.
   - **Blood**: Locate and donate to blood banks.
   - **Organ Donations**: Support public hospitals for organ donations
--**Local issues** : People can upload stories about any local issues which needs to be fixed, admin can upload that on home screen if the issue needs attention.
--**Emotional charity** : people can upload any of there past memory(Can be a charity event as well) which fills them with positivity.
+- **Local issues** : People can upload stories about any local issues which needs to be fixed, admin can upload that on home screen if the issue needs attention.
+- **Emotional charity** : people can upload any of there past memory(Can be a charity event as well) which fills them with positivity.
  
 ### HomeScreen Fragment
 
