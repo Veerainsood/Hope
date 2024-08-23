@@ -1,7 +1,7 @@
 package com.example.hopedonationapp
 
 import Story
-import StoryAdapter
+import com.example.hopedonationapp.adapter.StoryAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import android.graphics.BitmapFactory
 import android.graphics.pdf.PdfRenderer
 import android.media.MediaMetadataRetriever
 import android.net.Uri
-import android.os.ParcelFileDescriptor
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
@@ -22,11 +21,12 @@ import androidx.recyclerview.widget.RecyclerView
 //import com.example.hopedonationapp.models.story
 import com.google.firebase.storage.FirebaseStorage
 import androidx.activity.result.contract.ActivityResultContracts
-//import com.example.hopedonationapp.StoryAdapter.StoryAdapter
+//import com.example.hopedonationapp.com.example.hopedonationapp.adapter.StoryAdapter.com.example.hopedonationapp.adapter.StoryAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.StorageReference
 import android.provider.OpenableColumns
 import android.webkit.MimeTypeMap
+import com.bumptech.glide.Glide
 
 class ProfileFragment : Fragment() {
     private lateinit var fileUri: Uri
@@ -111,13 +111,16 @@ class ProfileFragment : Fragment() {
 
 
     private fun generateImageThumbnail(uri: Uri): Bitmap? {
-    return try {
-        val inputStream = context?.contentResolver?.openInputStream(uri)
-        BitmapFactory.decodeStream(inputStream)
-    } catch (e: Exception) {
-        null
+        return try {
+            val futureTarget = Glide.with(this)
+                .asBitmap()
+                .load(uri)
+                .submit()
+            futureTarget.get()
+        } catch (e: Exception) {
+            null
+        }
     }
-}
     private fun generateVideoThumbnail(uri: Uri): Bitmap? {
         return try {
             val retriever = MediaMetadataRetriever()
