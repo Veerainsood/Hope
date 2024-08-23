@@ -19,7 +19,7 @@
             android:id="@+id/button5"
             android:layout_width="291dp"
             android:layout_height="49dp"
-            android:text="Change Password"
+            android:text="Verify Companies"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/user"
             app:layout_constraintHorizontal_bias="1.0"
