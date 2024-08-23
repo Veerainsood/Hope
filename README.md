@@ -17,6 +17,8 @@ Hope is a comprehensive charity donation app designed to connect donors with ver
   - **Medicines**: Donate to public hospitals.
   - **Blood**: Locate and donate to blood banks.
   - **Organ Donations**: Support public hospitals for organ donations
+- **Local issues** : People can upload stories about any local issues which needs to be fixed, admin can upload that on home screen if the issue needs attention.
+- **Emotional charity** : people can upload any of there past memory(Can be a charity event as well) which fills them with positivity.
  
 ### HomeScreen Fragment
 
@@ -30,6 +32,8 @@ Hope is a comprehensive charity donation app designed to connect donors with ver
   - **Gaushala**: Opens Google Maps to find nearby goshala.
   - **JKP**: Opens an external link for JKP donations.
   - **Charity Organization**: Navigates to a fragment for verified charity organizations.
+  - **Red Heart**: It will take you to profile segment where you can upload stories.
+  - **Green Heart**: It will take you to the list of verified Companies.
 
 # Contribution
 - Aseem Anand -> Main role in Admin home interface, Sign in buttons, Profile fragment in home seciton (not yet completed), general help, working on push notification + general debugging + integrated profile fragment and checking stories importing from firebase.
