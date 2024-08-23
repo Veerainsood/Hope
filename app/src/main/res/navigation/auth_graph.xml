@@ -76,7 +76,13 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_check_storiesFragment"
             app:destination="@id/check_storiesFragment" />
-    </fragment>
+    <action
+        android:id="@+id/action_adminHomeFragment_to_verify_CompanyFragment"
+        app:destination="@id/verify_CompanyFragment" />
+    <action
+        android:id="@+id/action_adminHomeFragment_to_push_noticeFragment"
+        app:destination="@id/push_noticeFragment" />
+</fragment>
     <fragment
         android:id="@+id/admin_entrance"
         android:name="com.example.hopedonationapp.activity.admin_entrance"
@@ -139,5 +145,15 @@
         android:name="com.example.hopedonationapp.admin.check_storiesFragment"
         android:label="fragment_check_stories"
         tools:layout="@layout/fragment_check_stories" />
+    <fragment
+        android:id="@+id/push_noticeFragment"
+        android:name="com.example.hopedonationapp.push_noticeFragment"
+        android:label="fragment_push_notice"
+        tools:layout="@layout/fragment_push_notice" />
+    <fragment
+        android:id="@+id/verify_CompanyFragment"
+        android:name="com.example.hopedonationapp.admin.Verify_CompanyFragment"
+        android:label="fragment_verify__company"
+        tools:layout="@layout/fragment_verify__company" />
 
 </navigation>

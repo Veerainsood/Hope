@@ -31,7 +31,12 @@ class AdminHomeFragment : Fragment() {
         binding.button6.setOnClickListener(){
             findNavController().navigate(R.id.action_adminHomeFragment_to_check_storiesFragment)
         }
-
+        binding.verify.setOnClickListener(){
+            findNavController().navigate(R.id.action_adminHomeFragment_to_verify_CompanyFragment)
+        }
+        binding.user.setOnClickListener(){
+            findNavController().navigate(R.id.action_adminHomeFragment_to_push_noticeFragment)
+        }
         return binding.root;
     }
 

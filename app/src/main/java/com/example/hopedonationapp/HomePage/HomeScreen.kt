@@ -19,10 +19,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.StoryAdapter.AdminStoryAdapter
 import com.example.hopedonationapp.databinding.FragmentHomeScreenBinding
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
@@ -31,21 +33,20 @@ class HomeScreen : Fragment() {
     private lateinit var homeAdapter: HomeStoryAdapter
     private lateinit var storageRef: StorageReference
     private val storage = FirebaseStorage.getInstance()
-    private lateinit var storyAdapter: HomeStoryAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
 
-        storyAdapter = HomeStoryAdapter { story ->
+        homeAdapter = HomeStoryAdapter { story ->
             openFile(story)
         }
 
         // Set up the RecyclerView
         val recyclerView = binding.topStoriesRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = storyAdapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        recyclerView.adapter = homeAdapter
         loadSelectedStoriesFromFirebase()
         binding.clothes.setOnClickListener { openGoogleMaps("anath+ashram+near+me") }
         binding.food.setOnClickListener { openGoogleMaps("old+age+home+near+me") }
@@ -79,10 +80,10 @@ class HomeScreen : Fragment() {
     }
 
     private fun loadSelectedStoriesFromFirebase() {
-        val selectedStoriesRef = storage.reference.child("selected_stories/")
+        val selectedStoriesRef = storage.reference.child("stories/selected_stories/")
         selectedStoriesRef.listAll().addOnSuccessListener { result ->
             val stories = mutableListOf<Story>()
-            for (item in result.items) {
+            val tasks = result.items.map { item ->
                 item.downloadUrl.addOnSuccessListener { uri ->
                     val fileName = item.name
                     val mimeType = getMimeType(uri)
@@ -93,13 +94,25 @@ class HomeScreen : Fragment() {
                         else -> null
                     }
                     stories.add(Story(fileName = fileName, fileUrl = uri.toString(), thumbnailBitmap = thumbnailBitmap))
-                    storyAdapter.submitList(stories)
                 }
             }
+
+            // Wait for all tasks to complete
+            Tasks.whenAll(tasks).addOnSuccessListener {
+                // Debugging log to check data
+                Log.d("HomeScreen", "Loaded stories: ${stories.size}")
+                // Update the adapter once all stories are loaded
+                homeAdapter.submitList(stories)
+            }.addOnFailureListener { exception ->
+                Log.e("HomeScreen", "Failed to load stories", exception)
+                Toast.makeText(context, "Failed to load stories: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
         }.addOnFailureListener { exception ->
+            Log.e("HomeScreen", "Failed to load stories", exception)
             Toast.makeText(context, "Failed to load stories: ${exception.message}", Toast.LENGTH_SHORT).show()
         }
     }
+
 //    override fun onPause() {
 //        super.onPause()
 //        videoView.pause()

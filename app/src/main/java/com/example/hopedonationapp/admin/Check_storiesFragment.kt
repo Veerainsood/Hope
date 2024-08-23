@@ -19,12 +19,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.hopedonationapp.ARG_PARAM1
-import com.example.hopedonationapp.ARG_PARAM2
 import com.example.hopedonationapp.R
 import com.example.hopedonationapp.StoryAdapter.AdminStoryAdapter
 import com.example.hopedonationapp.databinding.FragmentCheckStoriesBinding
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -42,18 +42,10 @@ class check_storiesFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentCheckStoriesBinding
-    private lateinit var selectButton: Button
     private lateinit var uploadButton: Button
     private val storage = FirebaseStorage.getInstance()
     private val selectedStories = mutableListOf<Story>()
     private lateinit var storyAdapter: AdminStoryAdapter
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,7 +64,7 @@ class check_storiesFragment : Fragment() {
         recyclerView.adapter = storyAdapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        uploadButton=view.findViewById(R.id.button3)
+        uploadButton = view.findViewById(R.id.button3)
         uploadButton.setOnClickListener {
             val selectedStories = storyAdapter.getSelectedStories()
             if (selectedStories.isNotEmpty()) {
@@ -86,28 +78,86 @@ class check_storiesFragment : Fragment() {
         // Return the view after initializing everything
         return view
     }
+
     private fun uploadSelectedStoriesToFirebase(stories: List<Story>) {
-        val selectedStoriesRef = storage.reference.child("selected_stories/")
+        val selectedStoriesRef = storage.reference.child("stories/selected_stories/")
 
         for (story in stories) {
-            val fileUri = Uri.parse(story.fileUrl)
-            val fileName = fileUri.lastPathSegment ?: "unknown"
-            val fileRef = selectedStoriesRef.child(fileName)
+            val fileUrl = story.fileUrl
 
-            fileUri.let { uri ->
-                fileRef.putFile(uri)
+            // Check if the file URL is valid
+            if (fileUrl.startsWith("https://")) {
+                // Download the file using the URL
+                val fileName = Uri.parse(fileUrl).lastPathSegment ?: "unknown"
+                val fileRef = selectedStoriesRef.child(fileName)
+
+                // Create a temporary file to download the content
+                val localFile = File.createTempFile("temp", null, context?.cacheDir)
+
+                // Download the file from the URL
+                Firebase.storage.getReferenceFromUrl(fileUrl)
+                    .getFile(localFile)
                     .addOnSuccessListener {
-                        // Display success message
-                        Toast.makeText(context, "${story.fileName} uploaded successfully!", Toast.LENGTH_SHORT).show()
+                        // Upload the downloaded file to Firebase Storage
+                        val fileUri = Uri.fromFile(localFile)
+                        fileRef.putFile(fileUri)
+                            .addOnSuccessListener {
+                                // Display success message
+                                Toast.makeText(
+                                    context,
+                                    "${story.fileName} uploaded successfully!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .addOnFailureListener { exception ->
+                                // Display detailed error message
+                                Toast.makeText(
+                                    context,
+                                    "Failed to upload ${story.fileName}: ${exception.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.e("UploadError", "Failed to upload file ${story.fileName}", exception)
+                            }
                     }
                     .addOnFailureListener { exception ->
-                        // Display detailed error message
-                        Toast.makeText(context, "Failed to upload ${story.fileName}: ${exception.message}", Toast.LENGTH_SHORT).show()
-                        Log.e("UploadError", "Failed to upload file ${story.fileName}", exception)
+                        // Handle the error in downloading the file
+                        Toast.makeText(
+                            context,
+                            "Failed to download ${story.fileName}: ${exception.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Log.e("DownloadError", "Failed to download file ${story.fileName}", exception)
                     }
+            } else {
+                // Handle the case where the fileUrl is a local file URI or invalid
+                val fileUri = Uri.parse(fileUrl)
+                val fileName = fileUri.lastPathSegment ?: "unknown"
+                val fileRef = selectedStoriesRef.child(fileName)
+
+                fileUri.let { uri ->
+                    fileRef.putFile(uri)
+                        .addOnSuccessListener {
+                            // Display success message
+                            Toast.makeText(
+                                context,
+                                "${story.fileName} uploaded successfully!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        .addOnFailureListener { exception ->
+                            // Display detailed error message
+                            Toast.makeText(
+                                context,
+                                "Failed to upload ${story.fileName}: ${exception.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            Log.e("UploadError", "Failed to upload file ${story.fileName}", exception)
+                        }
+                }
             }
         }
     }
+
 
     private fun openFile(fileUrl: String) {
         val uri = Uri.parse(fileUrl)
@@ -126,6 +176,7 @@ class check_storiesFragment : Fragment() {
             Toast.makeText(context, "No app found to open this file.", Toast.LENGTH_SHORT).show()
         }
     }
+
     private fun loadAllUserStories() {
         val userStoriesRef = storage.reference.child("stories/")
         userStoriesRef.listAll().addOnSuccessListener { result ->
@@ -143,7 +194,13 @@ class check_storiesFragment : Fragment() {
                                 else -> null
                             }
 
-                            stories.add(Story(fileName = fileName, fileUrl = uri.toString(), thumbnailBitmap = thumbnailBitmap))
+                            stories.add(
+                                Story(
+                                    fileName = fileName,
+                                    fileUrl = uri.toString(),
+                                    thumbnailBitmap = thumbnailBitmap
+                                )
+                            )
                             if (stories.size == folderResult.items.size) {
                                 storyAdapter.submitList(stories)
                             }
@@ -152,9 +209,14 @@ class check_storiesFragment : Fragment() {
                 }
             }
         }.addOnFailureListener { exception ->
-            Toast.makeText(context, "Failed to load stories: ${exception.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "Failed to load stories: ${exception.message}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
+
     private fun getMimeType(uri: Uri): String {
         val extension = MimeTypeMap.getFileExtensionFromUrl(uri.toString())
         return when (extension.toLowerCase()) {
@@ -194,6 +256,7 @@ class check_storiesFragment : Fragment() {
             null
         }
     }
+}
 
 
 //    private fun generatePdfThumbnail(uri: Uri): Bitmap? {
@@ -256,23 +319,4 @@ class check_storiesFragment : Fragment() {
 //    }
 
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment check_storiesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            check_storiesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-}
+

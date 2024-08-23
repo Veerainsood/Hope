@@ -41,10 +41,10 @@ class company_home : Fragment() {
 
         textViewArray = arrayOf<String>(
             "Section 12A"," incorporation document", "registration certificate","(FCRA), if applicable"
-            , "(23C)section 10", "organisation’s operations"
+            , "(23C)section 10", "organisation’s operations","Company's LOGO","Company's URL"
         )
         buttonTextArray = arrayOf<String>(
-            "Upload 12A","Upload incorp doc","Upload reg cert","Upload FCRA","Upload 23C","Upload operations"
+            "Upload 12A","Upload incorp doc","Upload reg cert","Upload FCRA","Upload 23C","Upload operations","upload logo","upload website"
         )
 
         buttonStates = Array(textViewArray.size) { false }
