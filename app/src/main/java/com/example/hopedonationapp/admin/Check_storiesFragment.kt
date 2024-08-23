@@ -1,7 +1,6 @@
 package com.example.hopedonationapp.admin
 
 import Story
-import StoryAdapter
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,20 +15,22 @@ import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.hopedonationapp.ARG_PARAM1
 import com.example.hopedonationapp.ARG_PARAM2
 import com.example.hopedonationapp.R
-import com.example.hopedonationapp.SharedViewModel
 import com.example.hopedonationapp.StoryAdapter.AdminStoryAdapter
 import com.example.hopedonationapp.databinding.FragmentCheckStoriesBinding
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
+import okhttp3.OkHttpClient
+import okhttp3.Request
+
 
 /**
  * A simple [Fragment] subclass.
@@ -41,7 +42,6 @@ class check_storiesFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding: FragmentCheckStoriesBinding
-    private lateinit var sharedViewModel: SharedViewModel
     private lateinit var selectButton: Button
     private lateinit var uploadButton: Button
     private val storage = FirebaseStorage.getInstance()
@@ -139,7 +139,7 @@ class check_storiesFragment : Fragment() {
                             val thumbnailBitmap = when {
                                 mimeType.startsWith("image/") -> generateImageThumbnail(uri)
                                 mimeType.startsWith("video/") -> generateVideoThumbnail(uri)
-                                mimeType == "application/pdf" -> generatePdfThumbnail(uri)
+                                //mimeType == "application/pdf" -> generatePdfThumbnail(uri)
                                 else -> null
                             }
 
@@ -171,14 +171,20 @@ class check_storiesFragment : Fragment() {
         }
     }
 
+
     private fun generateImageThumbnail(uri: Uri): Bitmap? {
         return try {
-            val inputStream = context?.contentResolver?.openInputStream(uri)
-            BitmapFactory.decodeStream(inputStream)
+            val futureTarget = Glide.with(this)
+                .asBitmap()
+                .load(uri)
+                .submit()
+            futureTarget.get()
         } catch (e: Exception) {
             null
         }
     }
+
+
     private fun generateVideoThumbnail(uri: Uri): Bitmap? {
         return try {
             val retriever = MediaMetadataRetriever()
@@ -188,39 +194,66 @@ class check_storiesFragment : Fragment() {
             null
         }
     }
-    private fun generatePdfThumbnail(uri: Uri): Bitmap? {
-        return try {
-            // Open the ParcelFileDescriptor from the Uri
-            val parcelFileDescriptor = context?.contentResolver?.openFileDescriptor(uri, "r")
-            parcelFileDescriptor?.let {
-                // Get the FileDescriptor from the ParcelFileDescriptor
-                val fileDescriptor = it.fileDescriptor
 
-                // Create a PdfRenderer instance
-                val pdfRenderer = PdfRenderer(parcelFileDescriptor)
-                val pageCount = pdfRenderer.pageCount
 
-                // Check if the PDF has at least one page
-                if (pageCount > 0) {
-                    // Render the first page as a Bitmap
-                    val page = pdfRenderer.openPage(0)
-                    val bitmap = Bitmap.createBitmap(page.width, page.height, Bitmap.Config.ARGB_8888)
-                    page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-
-                    // Clean up resources
-                    page.close()
-                    pdfRenderer.close()
-
-                    bitmap
-                } else {
-                    null
-                }
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            null
-        }
-    }
+//    private fun generatePdfThumbnail(uri: Uri): Bitmap? {
+//        return try {
+//            // Step 1: Download the PDF file from the remote URL
+//            val pdfFile = downloadPdfFile(uri.toString()) ?: return null
+//
+//            // Step 2: Open the PDF file using PdfRenderer
+//            val parcelFileDescriptor = context?.contentResolver?.openFileDescriptor(Uri.fromFile(pdfFile), "r")
+//            parcelFileDescriptor?.let {
+//                val pdfRenderer = PdfRenderer(parcelFileDescriptor)
+//                val pageCount = pdfRenderer.pageCount
+//
+//                // Step 3: Render the first page as a Bitmap
+//                if (pageCount > 0) {
+//                    val page = pdfRenderer.openPage(0)
+//                    val bitmap = Bitmap.createBitmap(page.width, page.height, Bitmap.Config.ARGB_8888)
+//                    page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+//
+//                    // Clean up resources
+//                    page.close()
+//                    pdfRenderer.close()
+//
+//                    bitmap
+//                } else {
+//                    null
+//                }
+//            }
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            null
+//        }
+//    }
+//
+//    // Helper function to download the PDF file from the URL
+//    private fun downloadPdfFile(url: String): File? {
+//        return try {
+//            val client = OkHttpClient()
+//            val request = Request.Builder().url(url).build()
+//            val response = client.newCall(request).execute()
+//
+//            // Safely access the response body
+//            val inputStream: InputStream? = response.body?.byteStream()
+//            if (inputStream != null) {
+//                val file = File(context?.cacheDir, "downloaded_pdf.pdf")
+//                val outputStream = FileOutputStream(file)
+//
+//                inputStream.copyTo(outputStream)
+//                outputStream.close()
+//                inputStream.close()
+//
+//                file
+//            } else {
+//                null
+//            }
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            null
+//        }
+//    }
 
 
     companion object {
