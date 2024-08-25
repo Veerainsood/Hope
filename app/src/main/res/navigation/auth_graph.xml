@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_graph"
+    app:startDestination="@id/splsh">
+
+    <fragment
+        android:id="@+id/splsh"
+        android:name="com.example.hopedonationapp.authentication.Splsh"
+        android:label="fragment_splsh"
+        tools:layout="@layout/fragment_splsh" >
+        <action
+            android:id="@+id/action_splsh_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_splsh_to_signInFragment2"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_splsh_to_admin_entrance"
+            app:destination="@id/admin_entrance" />
+        <action
+            android:id="@+id/action_splsh_to_signInFragment3"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_splsh_to_admin_entrance2"
+            app:destination="@id/admin_entrance" />
+        <action
+            android:id="@+id/action_splsh_to_company_registration2"
+            app:destination="@id/company_registration2" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.hopedonationapp.authentication.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_otpFragment"
+            app:destination="@id/otpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_otpFragment2"
+            app:destination="@id/otpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_otpFragment3"
+            app:destination="@id/otpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.example.hopedonationapp.authentication.OTPFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otpFragment_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.hopedonationapp.HomePage.HomeScreen"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreen_to_verifiedCharityOrg"
+            app:destination="@id/verifiedCharityOrg" />
+        <action
+            android:id="@+id/action_homeScreen_to_verifiedCharityOrg2"
+            app:destination="@id/verifiedCharityOrg" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="com.example.hopedonationapp.admin.AdminHomeFragment"
+        android:label="fragment_admin_home"
+        tools:layout="@layout/fragment_admin_home" />
+    <fragment
+        android:id="@+id/admin_entrance"
+        android:name="com.example.hopedonationapp.activity.admin_entrance"
+        android:label="fragment_admin_entrance"
+        tools:layout="@layout/fragment_admin_entrance" >
+        <action
+            android:id="@+id/action_admin_entrance_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_admin_entrance_to_adminHomeFragment2"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifiedCharityOrg"
+        android:name="com.example.hopedonationapp.HomePage.VerifiedCharityOrg"
+        android:label="verified_charity_org"
+        tools:layout="@layout/verified_charity_org" >
+        <action
+            android:id="@+id/action_verifiedCharityOrg_to_payments"
+            app:destination="@id/payments" />
+    </fragment>
+    <fragment
+        android:id="@+id/payments"
+        android:name="com.example.hopedonationapp.payments.Payments"
+        android:label="fragment_payments"
+        tools:layout="@layout/fragment_payments" >
+        <action
+            android:id="@+id/action_payments_to_verifiedCharityOrg"
+            app:destination="@id/verifiedCharityOrg" />
+    </fragment>
+    <fragment
+        android:id="@+id/company_home"
+        android:name="com.example.hopedonationapp.Comapny.company_home"
+        android:label="fragment_company_home"
+        tools:layout="@layout/fragment_company_home" />
+    <fragment
+        android:id="@+id/company_registration2"
+        android:name="com.example.hopedonationapp.Comapny.CompanyRegistration"
+        android:label="fragment_company_registration"
+        tools:layout="@layout/fragment_company_registration" >
+        <action
+            android:id="@+id/action_company_registration2_to_companyLogin3"
+            app:destination="@id/companyLogin3" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyLogin3"
+        android:name="com.example.hopedonationapp.Comapny.companyLogin"
+        android:label="fragment_company_login"
+        tools:layout="@layout/fragment_company_login" >
+        <action
+            android:id="@+id/action_companyLogin3_to_company_home"
+            app:destination="@id/company_home" />
+    </fragment>
+
+</navigation>

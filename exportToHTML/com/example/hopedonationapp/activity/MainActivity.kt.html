@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">hopedonationapp</span><span class="s2">.</span><span class="s1">activity</span>
+
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">navigation</span><span class="s2">.</span><span class="s1">NavController</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">View</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">Toast</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">VideoView</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">enableEdgeToEdge</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">appcompat</span><span class="s2">.</span><span class="s1">app</span><span class="s2">.</span><span class="s1">AppCompatActivity</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">hopedonationapp</span><span class="s2">.</span><span class="s1">R</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">hopedonationapp</span><span class="s2">.</span><span class="s1">payments</span><span class="s2">.</span><span class="s1">Payments</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">hopedonationapp</span><span class="s2">.</span><span class="s1">utils</span><span class="s2">.</span><span class="s1">Utils</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">razorpay</span><span class="s2">.</span><span class="s1">PaymentResultListener</span>
+<span class="s1">import okhttp3</span><span class="s2">.</span><span class="s1">internal</span><span class="s2">.</span><span class="s1">Util</span>
+
+<span class="s0">class </span><span class="s1">MainActivity : AppCompatActivity</span><span class="s2">() , </span><span class="s1">PaymentResultListener</span><span class="s2">{ </span><span class="s3">// Activity == Screens</span>
+    <span class="s1">private lateinit </span><span class="s0">var </span><span class="s1">myFragment: Payments</span>
+    <span class="s1">private lateinit </span><span class="s0">var </span><span class="s1">navController: NavController</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState: Bundle?</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">)</span>
+        <span class="s1">enableEdgeToEdge</span><span class="s2">()</span>
+        <span class="s1">setContentView</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">activity_main</span><span class="s2">)</span>
+
+        <span class="s3">// inflates the layout , creates connection between layout and Main Acitvity</span>
+        <span class="s3">// R class is for recourse...   R.layout.activity_main -&gt; conneects Main with xml representing layout elements</span>
+        <span class="s3">//without this everything is 0/100</span>
+    <span class="s2">}</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onSupportNavigateUp</span><span class="s2">()</span><span class="s1">: Boolean </span><span class="s2">{</span>
+        <span class="s0">return </span><span class="s1">navController</span><span class="s2">.</span><span class="s1">navigateUp</span><span class="s2">() || </span><span class="s0">super</span><span class="s2">.</span><span class="s1">onSupportNavigateUp</span><span class="s2">()</span>
+    <span class="s2">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onPaymentSuccess</span><span class="s2">(</span><span class="s1">p0: String?</span><span class="s2">) {</span>
+        <span class="s1">Toast</span><span class="s2">.</span><span class="s1">makeText</span><span class="s2">(</span><span class="s0">this</span><span class="s2">,</span><span class="s4">&quot;Payment Successfull your payment id: </span><span class="s0">$</span><span class="s1">p0 </span><span class="s4">will be sent to you via sms&quot;</span><span class="s2">,</span><span class="s1">Toast</span><span class="s2">.</span><span class="s1">LENGTH_LONG</span><span class="s2">).</span><span class="s1">show</span><span class="s2">()</span>
+    <span class="s2">}</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onPaymentError</span><span class="s2">(</span><span class="s1">p0: Int</span><span class="s2">, </span><span class="s1">p1: String?</span><span class="s2">) {</span>
+        <span class="s1">Utils</span><span class="s2">.</span><span class="s1">showToast</span><span class="s2">(</span><span class="s0">this</span><span class="s2">,</span><span class="s4">&quot;Payment Failed: </span><span class="s0">$</span><span class="s1">p1</span><span class="s4">&quot;</span><span class="s2">)</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
