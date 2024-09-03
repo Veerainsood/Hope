@@ -1,5 +1,24 @@
 # Hope - Charity Donation App
-
+![plot](./app/src/main/photos/photo_20_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_19_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_18_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_17_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_16_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_15_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_14_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_13_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_12_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_11_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_10_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_9_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_8_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_7_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_6_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_5_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_4_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_3_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_2_2024-08-21_00-02-10.jpg)
+![plot](./app/src/main/photos/photo_1_2024-08-21_00-02-10.jpg)
 ## Overview
 
 Hope is a comprehensive charity donation app designed to connect donors with verified charitable organizations. It facilitates:
